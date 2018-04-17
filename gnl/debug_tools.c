@@ -1,5 +1,5 @@
 #include <get_next_line.h>
-#include <libft/libft.h>
+#include <libft.h>
 #include <stdio.h>
 
 void	ft_putchar_no_sp(char c)

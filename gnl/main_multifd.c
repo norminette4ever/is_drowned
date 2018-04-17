@@ -1,5 +1,5 @@
 #include <get_next_line.h>
-#include <libft/libft.h>
+#include <libft.h>
 #include "file_tools.h"
 #include "debug_tools.h"
 #include <stdio.h>
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 	{
 		ft_putstr_no_sp("fd 3 -> (");
 		res[0] = get_next_line(fd[0], &line);
-		ft_putnbr_c(res[0], P_RED);
+		ft_putnbr(res[0]);
 		ft_putstr(") -> ");
 		if (line)
 			ft_putstr_no_sp_red(line);
@@ -42,7 +42,7 @@ int		main(int argc, char **argv)
 
 		ft_putstr_no_sp("fd 4 -> (");
 		res[1] = get_next_line(fd[1], &line2);
-		ft_putnbr_c(res[1], "\033[36m");
+		ft_putnbr(res[1]);
 		ft_putstr(") -> ");
 		if (line2)
 			ft_putstr_no_sp_blue(line2);
@@ -54,7 +54,7 @@ int		main(int argc, char **argv)
 
 		ft_putstr_no_sp("fd 5 -> (");
 		res[2] = get_next_line(fd[2], &line3);
-		ft_putnbr_c(res[2], "\033[33m");
+		ft_putnbr(res[2]);
 		ft_putstr(") -> ");
 		if (line3)
 			ft_putstr_no_sp_yellow(line3);

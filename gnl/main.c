@@ -1,5 +1,5 @@
 #include <get_next_line.h>
-#include <libft/libft.h>
+#include <libft.h>
 #include "file_tools.h"
 #include "debug_tools.h"
 #include <stdio.h>

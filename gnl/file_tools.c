@@ -1,4 +1,4 @@
-#include <libft/libft.h>
+#include <libft.h>
 #include "file_tools.h"
 
 int		open_file(char *file, int option)
