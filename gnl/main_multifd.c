@@ -1,5 +1,5 @@
-#include <get_next_line.h>
-#include <libft.h>
+#include "get_next_line.h"
+#include "libft/libft.h"
 #include "file_tools.h"
 #include "debug_tools.h"
 #include <stdio.h>
@@ -22,47 +22,56 @@ int		main(int argc, char **argv)
 	fd[1] = open_file(argv[2], O_RDONLY);
 	fd[2] = open_file(argv[3], O_RDONLY);
 	ft_putstr("\x1b[32mOPEN OK \x1b[0m-> ");
-	ft_putendl("\x1b[33mLaunching...\x1b[0m\n");
-	res[0] = -1;
-	res[1] = -1;
-	res[2] = -1;
+	ft_putendl("\x1b[33mLaunching...\x1b[0m");
+	res[0] = -2;
+	res[1] = -2;
+	res[2] = -2;
 	while (!(res[0] == 0 && res[1] == 0 && res[2] == 0))
 	{
 		ft_putstr_no_sp("fd 3 -> (");
 		res[0] = get_next_line(fd[0], &line);
-		ft_putnbr(res[0]);
+		ft_putnbr_c(res[0], P_RED);
 		ft_putstr(") -> ");
-		if (line)
-			ft_putstr_no_sp_red(line);
-		if (!line || !line[0])
-			ft_putstr_no_sp_red("--x--");
-		ft_strclr(line);
+		if (res[0] != -1)
+		{
+			if (line)
+				ft_putstr_no_sp_red(line);
+			if (!line || !line[0])
+				ft_putstr_no_sp_red("--x--");
+			ft_strclr(line);
+		}
 		ft_putchar('\n');
 		ft_putchar('\n');
 
 		ft_putstr_no_sp("fd 4 -> (");
 		res[1] = get_next_line(fd[1], &line2);
-		ft_putnbr(res[1]);
+		ft_putnbr_c(res[1], "\033[36m");
 		ft_putstr(") -> ");
-		if (line2)
-			ft_putstr_no_sp_blue(line2);
-		if (!line2 || !line2[0])
-			ft_putstr_no_sp_blue("--x--");
+		if (res[1] != -1)
+		{
+			if (line2)
+				ft_putstr_no_sp_blue(line2);
+			if (!line2 || !line2[0])
+				ft_putstr_no_sp_blue("--x--");
+			ft_strclr(line2);
+		}
 		ft_putchar('\n');
 		ft_putchar('\n');
-		ft_strclr(line2);
 
 		ft_putstr_no_sp("fd 5 -> (");
 		res[2] = get_next_line(fd[2], &line3);
-		ft_putnbr(res[2]);
+		ft_putnbr_c(res[2], "\033[33m");
 		ft_putstr(") -> ");
-		if (line3)
-			ft_putstr_no_sp_yellow(line3);
-		if (!line3 || !line3[0])
-			ft_putstr_no_sp_yellow("--x--");
+		if (res[2] != -1)
+		{
+			if (line3)
+				ft_putstr_no_sp_yellow(line3);
+			if (!line3 || !line3[0])
+				ft_putstr_no_sp_yellow("--x--");
+			ft_strclr(line3);
+		}
 		ft_putchar('\n');
 		ft_putchar('\n');
-		ft_strclr(line3);
 		i++;
 	}
 	close(fd[0]);
